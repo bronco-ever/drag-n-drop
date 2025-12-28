@@ -108,10 +108,22 @@ function updateDOM() {
 
 }
 
+// Show Add Item Input Box
+function showInputBox(column) {
+  addBtns[column].style.visibility = 'hidden';
+  saveItemBtns[column].style.display = 'flex';
+  addItemContainers[column].style.display = 'flex';
+}
+
+// Hide Add Item Input Box
+function hideInputBox(column) {
+  addBtns[column].style.visibility = 'visible';
+  saveItemBtns[column].style.display = 'none';
+  addItemContainers[column].style.display = 'none';
+}
+
 // Allow arrays to reflect drag and drop items
 function rebuildArrays() {
-  console.log(backlogList.children);
-  console.log(progressList.children);
   backlogListArray = [];
   for (let i = 0; i < backlogList.children.length; i++) {
     backlogListArray.push(backlogList.children[i].textContent);
@@ -134,7 +146,6 @@ function rebuildArrays() {
 // When item starts dragging
 function drag(e) {
   draggedItem = e.target;
-  console.log('draggedItem:', draggedItem);
   // dragging = true;
 }
 
