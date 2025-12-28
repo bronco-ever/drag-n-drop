@@ -105,7 +105,15 @@ function updateDOM() {
   // Run getSavedColumns only once, Update Local Storage
   updatedOnLoad = true;
   updateSavedColumns();
+}
 
+// Add to column list, reset text box
+function addtoColumn(column) {
+  const itemText = addItems[column].textContent;
+  const selectedArray = listArrays[column];
+  selectedArray.push(itemText);
+  addItems[column].textContent = '';
+  updateDOM();
 }
 
 // Show Add Item Input Box
@@ -120,6 +128,7 @@ function hideInputBox(column) {
   addBtns[column].style.visibility = 'visible';
   saveItemBtns[column].style.display = 'none';
   addItemContainers[column].style.display = 'none';
+  addtoColumn(column);
 }
 
 // Allow arrays to reflect drag and drop items
